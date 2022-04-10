@@ -35,17 +35,29 @@ public class Main {
 						sc.nextLine();
 						break;
 					case 2:
-						transaction.add(newTransaction(minyak));
+						if(minyak.size() == 0) {
+							System.out.println("Tidak ada data minyak");
+						}else {
+							transaction.add(newTransaction(minyak));
+						}
 						System.out.println("Press Enter to continue...");
 						sc.nextLine();
 						break;
 					case 3:
-						showMinyak(minyak);
+						if(minyak.size() == 0) {
+							System.out.println("Tidak ada data minyak");
+						}else {
+							showMinyak(minyak);
+						}
 						System.out.println("Press Enter to continue...");
 						sc.nextLine();
 						break;
 					case 4:
-						showTransaction(transaction);
+						if(minyak.size() == 0) {
+							System.out.println("Tidak ada data transaksi");
+						}else {
+							showTransaction(transaction);
+						}
 						System.out.println("Press Enter to continue...");
 						sc.nextLine();
 						break;
@@ -153,7 +165,7 @@ public class Main {
 		int quantity = 0;
 		int price = 0;
 		double rand1; double rand2; double rand3;
-		TransactionDetail transactionDetail[] = new TransactionDetail[5];
+		TransactionDetail transactionDetail[] = new TransactionDetail[100];
 		int inp = 1;
 		int i = 0;
 
@@ -236,7 +248,7 @@ public class Main {
 
 		} while (inp == 1);
 
-		return new Transaction(ID, consumentName, tellerName, totalHarga, transactionDetail, date);
+		return new Transaction(ID, consumentName, tellerName, totalHarga, transactionDetail, date, i);
 	}
 
 	private void showTransaction(ArrayList<Transaction> transaction) {
@@ -246,16 +258,15 @@ public class Main {
 
 		for (Transaction transaction2 : transaction) {
 
-			System.out.println(transaction2.getTransactionDetailSize());
 			System.out.printf("| %s | %s | %s |", transaction2.getID(), transaction2.getConsumentName(), transaction2.getTellerName());
 
 			int i = 0;
 			for (TransactionDetail transactionDetail : transaction2.getTransactionDetail()) {
 				
-				if(i == transaction2.getTransactionDetailSize()-4) {
+				if(i == transaction2.getTransactionDetailSize()) {
 					break;
 				}else {
-					System.out.printf(" %s |", transactionDetail.getMinyakName());
+					System.out.printf(" %s & ", transactionDetail.getMinyakName());
 				}
 				i++;
 

@@ -4,12 +4,13 @@ public class Transaction {
     
     private String ID;
     private String date;
-    private TransactionDetail transactionDetail[] = new TransactionDetail[1];
+    private TransactionDetail transactionDetail[] = new TransactionDetail[100];
+    private int transactionDetailSize;
     private String consumentName;
     private String tellerName;
     private int totalHarga;
     
-    public Transaction(String ID, String consumentName, String tellerName, int totalHarga, TransactionDetail transactionDetail[], String date) {
+    public Transaction(String ID, String consumentName, String tellerName, int totalHarga, TransactionDetail transactionDetail[], String date, int transactionDetailSize) {
         
         this.setID(ID);
         this.setConsumentName(consumentName);
@@ -17,15 +18,20 @@ public class Transaction {
         this.setTotalHarga(totalHarga);
         this.setDate(date);
         this.setTransactionDetail2(transactionDetail);
+        this.setTransactionDetailSize(transactionDetailSize);
         
+    }
+
+    public int getTransactionDetailSize() {
+        return transactionDetailSize;
+    }
+
+    public void setTransactionDetailSize(int transactionDetailSize) {
+        this.transactionDetailSize = transactionDetailSize;
     }
 
     public TransactionDetail[] getTransactionDetail() {
         return transactionDetail;
-    }
-
-    public int getTransactionDetailSize() {
-        return transactionDetail.length;
     }
 
     public void setTransactionDetail2(TransactionDetail transactionDetail[]) {
